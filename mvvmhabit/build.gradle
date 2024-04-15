@@ -1,21 +1,18 @@
 apply plugin: 'com.android.library'
 apply plugin: 'maven-publish'
-publishing {
-    publications {
-        maven(MavenPublication) {
-            groupId 'com.github.y-jm'
-            artifactId 'mvvmhabit' // 替换为你的项目名
-            version '4.0.1'
-
-            from components.androidRelease // 对于Android项目, 可能是 `components.android`
-
-            // 确保你的库产生了.aar 或者.jar文件
-            artifact("$buildDir/outputs/aar/${artifactId}-release.aar")
+afterEvaluate {
+    android.libraryVariants.each {variant->
+        publishing.publications.create(variant.name,MavenPublication){
+            from components.findByName(variant.name)
+            groupId = 'com.github.y-jm'//自定义
+            artifactId = 'mvvmhabit'//自定义
+            version = '4.0.1'//自定义
         }
     }
 }
+
 android {
-    compileSdkVersion 28
+    compileSdkVersion rootProject.ext.android.compileSdkVersion
     defaultConfig {
         minSdkVersion rootProject.ext.android.minSdkVersion
         targetSdkVersion rootProject.ext.android.targetSdkVersion
