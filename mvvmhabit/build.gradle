@@ -6,7 +6,7 @@ afterEvaluate {
             from components.findByName(variant.name)
             groupId = 'com.github.y-jm'//自定义
             artifactId = 'mvvmhabit'//自定义
-            version = '4.0.5'//自定义
+            version = '4.0.7'//自定义
         }
     }
 }
