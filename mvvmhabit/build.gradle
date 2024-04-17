@@ -4,9 +4,9 @@ afterEvaluate {
     android.libraryVariants.each {variant->
         publishing.publications.create(variant.name,MavenPublication){
             from components.findByName(variant.name)
-            groupId = 'com.gitee.ouyjm'//自定义
+            groupId = 'com.github.y-jm'//自定义
             artifactId = 'mvvmhabit'//自定义
-            version = '4.0.1'//自定义
+            version = '4.0.5'//自定义
         }
     }
 }
