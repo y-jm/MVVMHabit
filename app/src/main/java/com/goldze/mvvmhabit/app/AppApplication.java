@@ -21,9 +21,12 @@ public class AppApplication extends BaseApplication {
         KLog.init(BuildConfig.DEBUG);
         //初始化全局异常崩溃
         initCrash();
-        //内存泄漏检测
-        if (!LeakCanary.isInAnalyzerProcess(this)) {
-            LeakCanary.install(this);
+        // LeakCanary代码
+        if (BuildConfig.DEBUG) {
+            //内存泄漏检测
+            if (!LeakCanary.isInAnalyzerProcess(this)) {
+                LeakCanary.install(this);
+            }
         }
     }
 
